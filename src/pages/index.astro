@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import CodeSample from "../components/CodeSample.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <Welcome />
+  <div class="w-[960px] mx-auto">
+    <h2 class="font-bold text-2xl">PetStore SDK Documentation</h2>
+    <p class="text-gray-400">
+      Each heading and text is provided by the dev, but the codesamples were
+      generated using Speakeasy.
+    </p>
+    <br />
+    <article class="prose dark:prose-invert max-w-none">
+      <h3>Get a Pet</h3>
+      <p>Here's an example of how to get a pet by ID using the SDK.</p>
+      <CodeSample id="getPetById" title="get-pet.ts" />
+      <h3>Store Inventory</h3>
+      <p>Get a store's inventory</p>
+      <CodeSample id="getInventory" title="get-inventory.ts" />
+    </article>
+  </div>
+  <footer class="p-4 bg-gray-900 mt-10 text-center text-gray-500">
+    <p>Wasn't that awesome??</p>
+  </footer>
 </Layout>

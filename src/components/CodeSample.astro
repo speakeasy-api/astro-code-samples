@@ -1,0 +1,33 @@
+---
+import { Code } from "astro:components";
+import { getEntry } from "astro:content";
+
+interface Props {
+  id: string;
+  title?: string;
+}
+
+const { id, title } = Astro.props;
+
+const sample = await getEntry("codeSamples", id);
+
+if (!sample) {
+  throw new Error(`Code sample with id "${id}" not found`);
+}
+---
+
+<div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+  <div class="bg-gray-900 text-gray-400 px-4 py-2 flex items-center">
+    <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+    <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+    <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+    <span class="ml-2">{title}</span>
+  </div>
+  <div>
+    <Code
+      class="p-6 rounded-md my-0"
+      code={sample.data.source}
+      lang="typescript"
+    />
+  </div>
+</div>
