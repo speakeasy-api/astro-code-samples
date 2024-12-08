@@ -1,3 +1,13 @@
+---
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import background from "../assets/background.svg";
+import Navbar from "../components/Navbar.astro";
+
+library.add(faGithub, faExternalLink);
+---
+
 <!doctype html>
 <html lang="en" class="bg-gray-900 dark">
   <head>
@@ -8,6 +18,13 @@
     <title>Astro Basics</title>
   </head>
   <body>
+    <Navbar />
+    <img
+      src={background.src}
+      alt="background image"
+      fetchpriority="high"
+      class="fixed top-0 left-0 w-full h-full -z-10 blur-[100px]"
+    />
     <slot />
   </body>
 </html>

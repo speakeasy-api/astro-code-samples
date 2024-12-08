@@ -1,4 +1,4 @@
-import typographyPlugin from '@tailwindcss/typography'
+import typographyPlugin from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,7 +7,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-	typographyPlugin()
-  ],
+  plugins: [typographyPlugin()],
 };

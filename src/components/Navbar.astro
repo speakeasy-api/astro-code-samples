@@ -1,0 +1,52 @@
+---
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
+
+const links = [{ href: "/docs", text: "Docs" }];
+
+const githubIcon = icon(faGithub);
+const externalLinkIcon = icon(faExternalLink);
+---
+
+<nav class="bg-gray-800 p-4 flex justify-between">
+  <ul class="list-none flex gap-4">
+    <li class="mr-2 flex items-center">
+      <a href="/">
+        <h6 class="text-white font-bold text-lg leading-none">Petstore SDK</h6>
+      </a>
+    </li>
+    {
+      links.map((link) => (
+        <li class="flex items-center">
+          <a href={link.href} class="text-white">
+            {link.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex gap-x-2">
+    <a
+      href="https://speakeasy.com"
+      class="flex items-center gap-x-2 border py-1 px-2 rounded"
+    >
+      Speakeasy
+      <div class="h-3 w-3">
+        <Fragment set:html={externalLinkIcon.html} />
+      </div>
+    </a>
+    <a
+      href="https://github.com/speakeasy-api/astro-code-samples"
+      class="flex items-center gap-x-2 border py-1 px-2 rounded"
+    >
+      <div class="h-4 w-4">
+        <Fragment set:html={githubIcon.html} />
+      </div>
+      GitHub
+      <div class="h-3 w-3">
+        <Fragment set:html={externalLinkIcon.html} />
+      </div>
+    </a>
+  </div>
+</nav>

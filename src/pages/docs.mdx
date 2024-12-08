@@ -1,0 +1,52 @@
+---
+layout: ../layouts/Markdown.astro
+---
+
+import Admonition from "../components/Admonition.astro";
+import CodeSample from "../components/CodeSample.astro";
+
+# Petstore SDK Documentation
+
+## Overview
+
+This is a demo showing how **Speakeasy's** auto-generated **Code Samples** can be used
+to document an SDK in **Astro**.
+
+An OpenAPI specification was sent to Speakeasy's Code Samples API, and the
+resulting code samples are used in the examples shown below. Check out the
+GitHub Repository for more information.
+
+## Demo
+
+### Get Inventory
+
+You can get the current inventory of the pet store using the SDK. Lorem ipsum
+odor amet, consectetuer adipiscing elit. Etiam molestie ornare vestibulum
+potenti sodales. Malesuada vestibulum egestas nullam hendrerit lobortis nulla
+maecenas bibendum? Dapibus ipsum aenean placerat elementum auctor maximus
+iaculis congue pellentesque. Taciti rutrum tincidunt class, libero rutrum arcu
+porttitor torquent. Cras ac penatibus; nisi luctus elit maecenas urna.
+
+<CodeSample id="getInventory" title="get-inventory.ts" />
+
+<Admonition title="Note">
+  The code sample above was injected into the MDX using 
+  {/* <!-- prettier-ignore --> */}
+  `<CodeSample id="getInventory" title="get-inventory.ts" />`.
+</Admonition>
+
+### Get Pet by ID
+
+You get a pet by its ID using the SDK. Ornare vulputate facilisi per magnis odio
+nibh enim urna mus. Elementum condimentum habitant eros ullamcorper malesuada.
+Suscipit adipiscing maximus arcu nostra sollicitudin conubia netus lacinia nam.
+
+<CodeSample id="getPetById" title="get-pet.ts" />
+
+Ante libero torquent laoreet laoreet magna commodo adipiscing mattis.
+
+<Admonition title="Note">
+  The code sample above was injected into the MDX using
+  {/* <!-- prettier-ignore --> */}
+  `<CodeSample id="getPetById" title="get-pet.ts" />`.
+</Admonition>
