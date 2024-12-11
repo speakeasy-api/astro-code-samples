@@ -23,9 +23,6 @@ importers:
       '@fortawesome/free-solid-svg-icons':
         specifier: ^6.7.1
         version: 6.7.1
-      '@speakeasyapi/code-samples':
-        specifier: ^1.0.0
-        version: 1.0.0(zod@3.23.8)
       astro:
         specifier: ^5.0.3
         version: 5.0.3(jiti@1.21.6)(rollup@4.28.1)(typescript@5.7.2)(yaml@2.6.1)
@@ -36,6 +33,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.15(tailwindcss@3.4.16)
+      yaml:
+        specifier: ^2.6.1
+        version: 2.6.1
 
 packages:
 
@@ -657,11 +657,6 @@ packages:
 
   '@shikijs/vscode-textmate@9.3.0':
     resolution: {integrity: sha512-jn7/7ky30idSkd/O5yDBfAnVt+JJpepofP/POZ1iMOxK59cOfqIgg/Dj0eFsjOTMw+4ycJN0uhZH/Eb0bs/EUA==}
-
-  '@speakeasyapi/code-samples@1.0.0':
-    resolution: {integrity: sha512-O8z90PjF2xOl/Y1FAA4q9MY7xBMS3raWmDt8p+xsr7FFwp4kex6aZohpstsC5jn3weDesk9oT1z2FEDL460IFA==}
-    peerDependencies:
-      zod: '>= 3'
 
   '@tailwindcss/typography@0.5.15':
     resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
@@ -2516,10 +2511,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@9.3.0': {}
-
-  '@speakeasyapi/code-samples@1.0.0(zod@3.23.8)':
-    dependencies:
-      zod: 3.23.8
 
   '@tailwindcss/typography@0.5.15(tailwindcss@3.4.16)':
     dependencies:

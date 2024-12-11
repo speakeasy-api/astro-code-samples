@@ -1,7 +1,6 @@
-import { SDK as SpeakeasySDK } from "@speakeasyapi/code-samples";
 import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
-import { SPEAKEASY_API_KEY } from "astro:env/server";
+import { parse } from "yaml";
 
 const CodeSampleSchema = z.object({
   lang: z.string(),
@@ -23,44 +22,33 @@ const OpenAPISpecSchema = z.object({
   ),
 });
 
+function parseJSONorYAML(input: string): any {
+  try {
+    return JSON.parse(input);
+  } catch (jsonError) {
+    try {
+      return parse(input);
+    } catch (yamlError) {
+      throw new Error("Failed to parse input as JSON or YAML");
+    }
+  }
+}
+
 const codeSamples = defineCollection({
   loader: async () => {
-    const speakeasy = new SpeakeasySDK({
-      security: {
-        apiKey: SPEAKEASY_API_KEY,
-      },
-    });
+    const publicOASResponse = await fetch(
+      "https://spec.speakeasy.com/walker/walker/wizard-world-api-with-code-samples"
+    );
 
-    const oas = await fetch("https://petstore3.swagger.io/api/v3/openapi.json");
+    const publicOAS = await publicOASResponse.text();
 
-    const previewResult = await speakeasy.codesamples.preview({
-      languages: ["typescript"],
-      schemaFile: {
-        fileName: "openapi.yaml",
-        content: await oas.arrayBuffer(),
-      },
-      packageName: "petstore",
-      sdkClassName: "PetstoreSDK",
-    });
+    const unvalidatedSpec = parseJSONorYAML(publicOAS);
 
-    const reader = previewResult.getReader();
-    const decoder = new TextDecoder();
-    let result = "";
-    let done = false;
-
-    while (!done) {
-      const { value, done: streamDone } = await reader.read();
-      done = streamDone;
-      if (value) {
-        result += decoder.decode(value, { stream: !done });
-      }
-    }
-
-    const parsedSpec = OpenAPISpecSchema.parse(JSON.parse(result));
+    const validatedSpec = OpenAPISpecSchema.parse(unvalidatedSpec);
 
     const codeSampleCollection: Array<{ id: string } & CodeSample> = [];
 
-    for (const pathSpec of Object.values(parsedSpec.paths)) {
+    for (const pathSpec of Object.values(validatedSpec.paths)) {
       for (const pathMethodSpec of Object.values(pathSpec)) {
         for (const codeSample of pathMethodSpec["x-codeSamples"]) {
           codeSampleCollection.push({
