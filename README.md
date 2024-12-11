@@ -13,7 +13,7 @@ Using a method like this gives you a few awesome benefits:
 
 ### The Content Loader
 
-Check out [content.config.ts](/src/content.config.ts). This is where most of the magic happens. The loader uses Speakeasy's `Code Samples SDK` to auto-generate code samples from Swagger's example OpenAPI spec (`petstore`). It then parses the result and makes a content collection so code samples are a breeze to fetch in Astro components.
+Check out [content.config.ts](/src/content.config.ts). This is where most of the magic happens. The loader uses Speakeasy's `Code Samples SDK` to auto-generate code samples from `Wizard World API`. It then parses the result and makes a content collection so code samples are a breeze to fetch in Astro components.
 
 ### The `CodeSample` Component
 
